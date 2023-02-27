@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>ITSC-HRMS Login</title>
+   <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{% static 'hrms/vendors/iconfonts/mdi/css/materialdesignicons.min.css' %} ">
+
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{% static 'hrms/css/style.css' %}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{% static 'hrms/images/favicon.png' %}" />
+</head>
+
+<body class="hold-transition login-page">
+<div class="login-box">
+  <!-- /.login-logo -->
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a href="#" class="h1"><b style="color: #FFC107;">Users</b>Manager</a>
+    </div>
+    <div class="card-body">
+      <p class="login-box-msg">S'authentifier pour commencer la session</p>
+
+      <form  action=" {% url 'appManager:login' %} "  method="post" >
+        {% csrf_token %}
+        <div class="input-group mb-3">
+           {{form.username}}
+           <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+      
+        <div class="input-group mb-3">
+          {{form.password}}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Se souvenir de moi
+              </label>
+              
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Connecter</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <div class="social-auth-links text-center mt-2 mb-3">
+        
+      </div>
+      <!-- /.social-auth-links -->
+
+      <p class="mb-1">
+        </p>
+      <p class="mb-0">
+        <a href="{% url 'appManager:reg' %}" class="text-center">Lancer une inscription</a>
+      </p>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+<!-- /.login-box -->
+
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} utilisateurs | USERSMANAGER {% endblock title %}
+     
+{% block content %}
+
+  <div class="content-wrapper">
+        
+         <section class="content-header">
+            <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" ><a href="#" >Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Utilisateurs </li>
+                        <li class="breadcrumb-item active" aria-current="page">Tout</li>
+                    </ol>
+                </nav>
+         </section>
+         <section class="content">
+              <div class="card">
+                <h4 class="card-header">Liste des Utilisateurs
+                <button class="btn btn-sm btn-secondary mb-3 float-right" onClick="printDiv('datatab');"> Imprimer </button>
+                  <a href="#" class="btn btn-sm btn-primary mb-3 float-right" data-toggle="modal" data-target="#ModalCenter"><i class="fa fa-filter"></i>Filtrer</a>
+                </h4>
+                  <div id="datatab"  class="card-body table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>
+                            Pseudo
+                          </th>
+                          <th>
+                           E-mail 
+                          </th>
+                          <th>
+                            Age
+                          </th>
+                          <th>
+                            Sexe
+                          </th>
+                          <th>
+                            Résidence
+                          </th>
+                          <th class="hide d-print-none" style="width: 2rem;">
+                            Actions
+                          </th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for profile in profiles  %}
+                     
+                        <tr>
+                          <td>
+                            {{profile.username}}
+                          </td>
+                            <td>
+                            {{profile.email}}
+                          </td>
+                          <td>
+                           {{profile.age}}
+                          </td>
+                          <td class="text-danger"> 
+                            {{profile.gender}}
+                          </td>
+                          <td>
+                          {{profile.hometown}}
+                          </td>
+                         
+                          <td class="hide d-print-none">
+                                <div class="btn-group">
+                                <button type="button" class="btn btn-info dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                  <i class="fa fa-cog "></i>Gérer
+                                </button>
+                                <div class="dropdown-menu" role="menu">
+                                  <a class="dropdown-item" href="{% url 'appManager:Profile_detail' username=profile.username  %}">
+                                        <i class="fa fa-eye text-success fa-fw"></i>
+                                        Vue</a>
+  
+                                </div>
+                                </div> 
+                          </td>
+                         
+                        </tr>
+
+                        {% endfor %}
+                         
+                      </tbody>
+                    </table>
+                  
+                    </div>
+                  </div>
+                    <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Selectionner les filtres</h5>
+                            
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                          </div>
+                          <form method="GET">
+                            <div class="card-body">
+                              <div class="row">
+                                <label for="hometown">Location</label><br>
+                                <input  class="form-control" type="text"  name="hometown" value=''>
+                               </div>
+                               <br>
+                                 <div class="row">
+                                 <label for="gender">Sexe</label><br>
+                                    <select class="form-control" id="gender" name="gender">
+                                      <option value="" selected disabled hidden>Tout</option>
+                                      <option name="femme" value="femme">FEMME</option>
+                                      <option name="homme" value="homme">HOMME</option>
+                                    </select>
+                               </div>
+                               <br>
+                               <div class="row">
+                                 <label for="max_age">Age_Max</label><br>
+                                 <input  class="form-control" type="number"   name="max_age" value=None>
+                                 <label for="min_age">Age_Min</label><br>
+                                 <input  class="form-control" type="number"   name="min_age" value=None>
+                               </div>
+                               <br> 
+                            </div>
+                             <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-primary">Filtrer</button>
+                            </div>
+                          </form>
+                         </div>
+                      </div>
+                  </div>   
+                </section>
+             
+        {% block noty %}
+        <script>
+         function printDiv(divName){
+                  var printContents = document.getElementById(divName).innerHTML;
+                  var originalContents = document.body.innerHTML;
+                  
+                  document.body.innerHTML = printContents;
+                  
+                  window.print();
+            
+                  document.body.innerHTML = originalContents;
+                }
+        </script>
+        {% endblock noty %}
+        {% endblock content %}

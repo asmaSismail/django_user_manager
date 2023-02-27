@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>{% block title  %}{% endblock title %}</title>
+  <!-- plugins:css -->
+  
+  <link rel="stylesheet" href="{% static 'hrms/vendors/iconfonts/mdi/css/materialdesignicons.min.css' %} ">
+  <link rel="stylesheet" href="{% static 'hrms/vendors/iconfonts/font-awesome/css/font-awesome.css' %} ">
+ 
+  
+   <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+   
+</head>
+<body class="hold-transition sidebar-mini ">
+ 
+<div class="wrapper ">
+  
+    {% include "nav.html" %}
+  
+    {% include 'sidebar.html' %}
+     
+    {% block content %} {% endblock content %}
+    
+     
+    {% include 'footer.html' %} 
+</div>
+
+  <!-- Bootstrap -->
+  <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- jQuery -->
+  <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+
+  <script src="{% static 'hrms/js/lightbox.js' %}"></script>  
+  <!-- AdminLTE -->
+  <script src="{% static 'dist/js/adminlte.js' %}"></script>
+  <script src="{% static 'hrms/vendors/js/vendor.bundle.base.js' %}"></script>
+  <script src="{% static 'hrms/vendors/js/vendor.bundle.addons.js' %}"></script>
+
+    
+  
+
+  {% block noty %}
+ 
+  {% endblock noty %}
+</body>
+
+</html>

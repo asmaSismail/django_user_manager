@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} User Info | USERMANAGER {% endblock title %}
+{% block content %}
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-lg-12 grid-margin">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'appManager:api' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Utilisateurs </li>
+                        <li class="breadcrumb-item active" aria-current="page">Detail</li>
+                    </ol>
+                </nav>
+                    <div class="card">
+                        <div class="card-body">
+                           <h4 class="text-center text-primary"><i class="fa fa-address-book-o">&emsp; Profile Utilisateur</i></h4><hr>   
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 d-flex align-items-stretch grid-margin">
+
+                                    <div class="card border-top border-bottom border-success">
+                                        <div class="card-body">
+                        
+                                       <img src="{% static 'hrms/images/images.png' %}"alt="" class="img-fluid" width='200px' height='200px'>
+                                   
+                                        <p class="lead mt-2 text-center"> 
+                                        
+                                        <small class='text-center text-secondary'>( ID )</small>
+                                        </p>
+                                            
+                                        </div>
+                                    </div>
+
+                                
+                                </div>
+                                    <!-- Second column -->
+                                <div class="col-lg-10 col-md-10">
+                                    <div class="table-responsive border-top border-success table-striped">
+                                        <p class="lead text-center mt-2">Information Personnelle.</p>
+                                        <table class="table">
+                                        <tr>
+                                            <th style="width:50%">Pseudo:</th>
+                                            <td>{{profile.username}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>E-mail</th>
+                                            <td>{{profile.email}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Sexe:</th>
+                                            <td>{{profile.gender}}</td>
+                                        </tr>
+                                          <tr>
+                                            <th>Age:</th>
+                                            <td>{{profile.age}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Emplacement:</th>
+                                            <td>{{profile.hometown}}</td>
+                                        </tr>
+                                      
+                                        
+                                        
+                                        </table>
+
+                                    </div>   
+                                </div>
+                          
+                           </div>                     
+                                        
+                   </div>
+              </div>
+           </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
