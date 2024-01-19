@@ -6,4 +6,4 @@ The system is built using Django's REST API filters and uses a Bootstrap templat
 Users can also view the details of individual profiles, and there is a button to print the entire list.
 
 
-![Application Image](./demo/.png)
+![Application Image](./demo/'Capture d’écran du 2023-02-27 17-22-29.png')
